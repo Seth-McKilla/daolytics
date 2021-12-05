@@ -5,11 +5,6 @@ import Head from "next/head";
 
 import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 
-// Mui
-//import Box from "@mui/material/Box";
-//import Grid from "@mui/material/Grid";
-//import Typography from "@mui/material/Typography";
-
 // Layout
 import { LayoutDashboard } from "../layouts";
 

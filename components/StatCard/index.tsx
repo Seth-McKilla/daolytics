@@ -3,8 +3,8 @@ import { Box, Text, Tooltip } from "@chakra-ui/react";
 
 type Props = {
   title: string;
-  value: number;
-  valueColor: string;
+  value: string;
+  valueColor?: string;
   Icon: ComponentType;
   tooltip?: string;
 };

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Button,
   Box,
@@ -7,6 +8,7 @@ import {
   InputLeftElement,
   Input,
   useColorModeValue,
+  Text,
 } from "@chakra-ui/react";
 import { FiMenu, FiSearch } from "react-icons/fi";
 
@@ -39,6 +41,7 @@ export default function NavTop(props: Props) {
         icon={<FiMenu />}
         size="sm"
       />
+
       <InputGroup w="96" display={{ base: "none", md: "flex" }}>
         <InputLeftElement color="gray.500">
           <FiSearch />
