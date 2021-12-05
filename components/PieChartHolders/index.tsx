@@ -5,19 +5,23 @@ import {
   Pie,
   ResponsiveContainer,
 } from "recharts";
-
-// Mui
-import Paper from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import { blue, purple, green, orange, brown } from "@mui/material/colors";
+import { Box, Tooltip, Text } from "@chakra-ui/react";
+import theme from "@chakra-ui/theme";
 
 // Components
 import RenderActiveShape from "./RenderActiveShape";
 
+type Props = {
+  data: any;
+  title: string;
+  tooltip: string;
+};
+
 const getColorShades = () => {
-  const colorList = [blue, purple, green, orange, brown];
-  const colorShades = [];
+  const { red, blue, green, purple, pink } = theme.colors;
+
+  const colorList = [red, blue, green, purple, pink];
+  const colorShades: string[] = [];
 
   colorList.forEach((color) => {
     colorShades.push(
@@ -32,27 +36,28 @@ const getColorShades = () => {
   return colorShades;
 };
 
-export default function PieChartHolders({ data, title, tooltip }) {
+export default function PieChartHolders(props: Props) {
+  const { data, title, tooltip } = props;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const COLORS = getColorShades();
 
-  const topHolders = data.map((item, index) => {
-    return {
-      address: item.address,
-      value: Number(item.balance),
-      fill: COLORS[index],
-    };
-  });
+  const topHolders = data.map(
+    (item: { address: string; balance: number }, index: number) => {
+      return {
+        address: item.address,
+        value: Number(item.balance),
+        fill: COLORS[index],
+      };
+    }
+  );
 
-  const onPieEnter = (_, index) => setActiveIndex(index);
+  const onPieEnter = (_: undefined, index: number) => setActiveIndex(index);
 
   return (
-    <Paper elevation={10}>
+    <Box>
       <Tooltip title={tooltip}>
-        <Typography variant="h5" align="center" gutterBottom>
-          {title}
-        </Typography>
+        <Text fontSize="md">{title}</Text>
       </Tooltip>
       <ResponsiveContainer width="100%" aspect={3}>
         <RePieChart>
@@ -69,12 +74,12 @@ export default function PieChartHolders({ data, title, tooltip }) {
             dataKey="value"
             onMouseEnter={onPieEnter}
           >
-            {topHolders.map(({ fill }, index) => (
+            {topHolders.map(({ fill }: { fill: string }, index: number) => (
               <Cell key={`cell-${index}`} fill={fill} />
             ))}
           </Pie>
         </RePieChart>
       </ResponsiveContainer>
-    </Paper>
+    </Box>
   );
 }

@@ -3,7 +3,23 @@ import { Sector } from "recharts";
 // Utils
 import { numbersWithCommas } from "../../../utils/numbers";
 
-export default function RenderActiveShape(props) {
+type Props = {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  startAngle: number;
+  endAngle: number;
+  fill: string;
+  payload: {
+    address: string;
+  };
+  percent: number;
+  value: number;
+};
+
+export default function RenderActiveShape(props: Props) {
   const RADIAN = Math.PI / 180;
   const {
     cx,
@@ -18,6 +34,7 @@ export default function RenderActiveShape(props) {
     percent,
     value,
   } = props;
+
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
