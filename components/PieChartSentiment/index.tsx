@@ -5,22 +5,26 @@ import {
   Pie,
   ResponsiveContainer,
 } from "recharts";
-
-// Mui
-import Paper from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
+import { Box, Tooltip, Text } from "@chakra-ui/react";
 
 // Components
 import RenderActiveShape from "./RenderActiveShape";
 
-export default function PieChartSentiment({ data, title, tooltip }) {
+type Props = {
+  data: any;
+  title: string;
+  tooltip: string;
+};
+
+export default function PieChartSentiment(props: Props) {
+  const { data, title, tooltip } = props;
+
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const onPieEnter = (_, index) => setActiveIndex(index);
+  const onPieEnter = (_: undefined, index: number) => setActiveIndex(index);
 
   return (
-    <Paper elevation={10} sx={{ maxWidth: 250 }}>
+    <Box>
       <ResponsiveContainer width="100%" aspect={1}>
         <RePieChart>
           <Pie
@@ -36,17 +40,15 @@ export default function PieChartSentiment({ data, title, tooltip }) {
             dataKey="value"
             onMouseEnter={onPieEnter}
           >
-            {data.map(({ color }, index) => (
+            {data.map(({ color }: { color: string }, index: number) => (
               <Cell key={`cell-${index}`} fill={color} />
             ))}
           </Pie>
         </RePieChart>
       </ResponsiveContainer>
       <Tooltip title={tooltip}>
-        <Typography variant="h5" align="center" gutterBottom>
-          {title}
-        </Typography>
+        <Text fontSize="md">{title}</Text>
       </Tooltip>
-    </Paper>
+    </Box>
   );
 }

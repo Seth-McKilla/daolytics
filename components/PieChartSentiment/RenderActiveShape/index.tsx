@@ -1,6 +1,21 @@
 import { Sector } from "recharts";
 
-export default function RenderActiveShape(props) {
+type Props = {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  startAngle: number;
+  endAngle: number;
+  fill: string;
+  payload: {
+    name: string;
+  };
+  percent: number;
+};
+
+export default function RenderActiveShape(props: Props) {
   const {
     cx,
     cy,
