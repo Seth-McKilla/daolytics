@@ -4,7 +4,15 @@ import { FaTwitter, FaDiscord, FaGithub } from "react-icons/fa";
 
 import SocialLink from "./SocialLink";
 
-export default function SocialLinks({ githubLink, twitterLink, discordLink }) {
+type Props = {
+  githubLink: string;
+  twitterLink: string;
+  discordLink: string;
+};
+
+export default function SocialLinks(props: Props) {
+  const { githubLink, twitterLink, discordLink } = props;
+
   return (
     <Flex
       pt={10}

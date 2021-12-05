@@ -8,22 +8,29 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// Mui
-import Paper from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import { default as MuiTooltip } from "@mui/material/Tooltip";
+// Chakra
+import { Tooltip as ChakraTooltip, Box, Text } from "@chakra-ui/react";
 
 // Utils
 import { numbersWithCommas, abbrNumber } from "../../utils/numbers";
 
-export default function LineGraph({ title, data, color, keyX, keyY, tooltip }) {
+type Props = {
+  title: string;
+  data: Array<{ date: string; transactions: number }>;
+  color: string;
+  keyX: string;
+  keyY: string;
+  tooltip: string;
+};
+
+export default function LineGraph(props: Props) {
+  const { title, data, color, keyX, keyY, tooltip } = props;
+
   return (
-    <Paper elevation={10}>
-      <MuiTooltip title={tooltip}>
-        <Typography variant="h5" gutterBottom m={1} align="center">
-          {title}
-        </Typography>
-      </MuiTooltip>
+    <Box>
+      <ChakraTooltip title={tooltip}>
+        <Text fontSize="lg">{title}</Text>
+      </ChakraTooltip>
       <ResponsiveContainer width="100%" aspect={2.5}>
         <AreaChart
           width={500}
@@ -45,7 +52,7 @@ export default function LineGraph({ title, data, color, keyX, keyY, tooltip }) {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={keyX} angle={-45} textAnchor="end" />
           <YAxis tickFormatter={(label) => abbrNumber(label)} />
-          <Tooltip formatter={(number) => numbersWithCommas(number)} />
+          <Tooltip formatter={(number: number) => numbersWithCommas(number)} />
           <Area
             type="monotone"
             dataKey={keyY}
@@ -54,6 +61,6 @@ export default function LineGraph({ title, data, color, keyX, keyY, tooltip }) {
           />
         </AreaChart>
       </ResponsiveContainer>
-    </Paper>
+    </Box>
   );
 }

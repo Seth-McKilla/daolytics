@@ -1,18 +1,26 @@
 import Link from "next/link";
 import React from "react";
 import { Text, Box, Flex, Image, useColorModeValue } from "@chakra-ui/react";
-//import { motion } from "framer-motion";
-import daoList from "../../constants/daoList";
+import daoList from "../../constants/daoList.json";
 import _ from "lodash";
 
-export default function CardDao({ name, ticker, price, imgUrl }) {
+type Props = {
+  name: string;
+  ticker: string;
+  price: number;
+  imgUrl: string;
+};
+
+export default function CardDao(props: Props) {
+  const { name, ticker, price, imgUrl } = props;
+
   const dao = _.find(daoList, {
     contractTicker: _.toUpper(ticker),
   });
 
   return (
     <Link
-      href={`/${dao.chainId}/${dao.contractAddress}`}
+      href={`/${dao?.chainId}/${dao?.contractAddress}`}
       passHref
       prefetch={false}
     >
@@ -35,7 +43,6 @@ export default function CardDao({ name, ticker, price, imgUrl }) {
           <Box p="6">
             <Box d="flex" alignItems="baseline">
               <Box
-                gutterBottom
                 as="h4"
                 color="white"
                 fontWeight="semibold"

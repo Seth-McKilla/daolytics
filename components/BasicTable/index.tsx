@@ -8,7 +8,7 @@ import { numbersWithCommas } from "../../utils/numbers";
 
 type Props = {
   title: String;
-  rows: {}[];
+  rows: { address: string; balance: number; total_supply: number }[];
 };
 
 const BasicTable = (props: Props) => {
