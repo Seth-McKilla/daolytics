@@ -3,15 +3,18 @@ import {
   Box,
   Flex,
   IconButton,
+  InputGroup,
+  InputLeftElement,
+  Input,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu, FiSearch } from "react-icons/fi";
 
 type Props = {
   onOpen: () => void;
 };
 
-export default function TopBar(props: Props) {
+export default function NavTop(props: Props) {
   const { onOpen } = props;
 
   const bg = useColorModeValue("white", "gray.800");
@@ -36,11 +39,13 @@ export default function TopBar(props: Props) {
         icon={<FiMenu />}
         size="sm"
       />
-      {/* <InputGroup w="96" display={{ base: "none", md: "flex" }}>
-            <InputLeftElement color="gray.500" children={<FiSearch />} />
-            <Input placeholder="Search for articles..." />
-          </InputGroup>
-           */}
+      <InputGroup w="96" display={{ base: "none", md: "flex" }}>
+        <InputLeftElement color="gray.500">
+          <FiSearch />
+        </InputLeftElement>
+        <Input placeholder="Search metrics..." />
+      </InputGroup>
+
       <Box
         as="iframe"
         src="https://coinhippo.io?widget=price-marquee&theme=?"

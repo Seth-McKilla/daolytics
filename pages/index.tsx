@@ -3,7 +3,7 @@ import Head from "next/head";
 //import Image from "next/image";
 // import daoList from "../constants/daoList";
 
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 
 // Mui
 //import Box from "@mui/material/Box";
@@ -11,9 +11,7 @@ import { Box, useColorModeValue } from "@chakra-ui/react";
 //import Typography from "@mui/material/Typography";
 
 // Layout
-
-// Components
-import { Navigation } from "../components";
+import { LayoutDashboard } from "../layouts";
 
 export default function Home() {
   return (
@@ -27,6 +25,12 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <LayoutDashboard>
+        <Box>
+          <Text fontSize="xl">Placeholder</Text>
+        </Box>
+      </LayoutDashboard>
 
       {/* <LandingLayout>
         <Box item xs={12} align="center" bg={useColorModeValue("white", "gray.800")} sx={{ color: "#fff", zIndex: 10 }}>

@@ -1,4 +1,5 @@
-export { default as Navigation } from "./Navigation";
+export { default as NavSide } from "./NavSide";
+export { default as NavTop } from "./NavTop";
 export { default as DaoCard } from "./DaoCard";
 export { default as PieChartSentiment } from "./PieChartSentiment";
 export { default as PieChartHolders } from "./PieChartHolders";

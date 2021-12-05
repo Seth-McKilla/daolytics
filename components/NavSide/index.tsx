@@ -20,10 +20,10 @@ import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 // Components
 import NavLink from "./NavLink";
-import { SocialLinks } from "../..";
+import { SocialLinks } from "..";
 //import { Logo } from "logo";
 
-export default function Sidebar() {
+export default function NavSide() {
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const color = useColorModeValue("brand.500", "white");
