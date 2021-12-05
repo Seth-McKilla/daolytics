@@ -51,7 +51,7 @@ export default function LineGraph(props: Props) {
           </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={keyX} angle={-45} textAnchor="end" />
-          <YAxis tickFormatter={(label: number) => abbrNumber(label)} />
+          <YAxis tickFormatter={(value: number) => abbrNumber(value)} />
           <Tooltip formatter={(number: number) => numbersWithCommas(number)} />
           <Area
             type="monotone"

@@ -1,7 +1,7 @@
-import Head, { NextPage } from "next/head";
+import Head from "next/head";
 //import Link from "next/link";
 //import Image from "next/image";
-import daoList from "../constants/daoList";
+// import daoList from "../constants/daoList";
 
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
@@ -11,13 +11,11 @@ import { Box, useColorModeValue } from "@chakra-ui/react";
 //import Typography from "@mui/material/Typography";
 
 // Layout
-import { LandingLayout } from "../layouts";
 
 // Components
-import { DaoCard } from "../components";
-import { Sidebar } from "../components";
+import { Navigation } from "../components";
 
-const Home: NextPage = ({ daos }) => {
+export default function Home() {
   return (
     <div>
       <Head>
@@ -29,8 +27,6 @@ const Home: NextPage = ({ daos }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Sidebar />
 
       {/* <LandingLayout>
         <Box item xs={12} align="center" bg={useColorModeValue("white", "gray.800")} sx={{ color: "#fff", zIndex: 10 }}>
@@ -53,33 +49,31 @@ const Home: NextPage = ({ daos }) => {
       </LandingLayout>  */}
     </div>
   );
-};
-
-export async function getServerSideProps() {
-  const daoNames = [];
-  const daoTickers = [];
-  daoList.map(({ contractName, contractTicker }) => {
-    daoNames.push(contractName);
-    daoTickers.push(contractTicker);
-  });
-
-  let daos = [];
-
-  const res = await fetch(
-    `https://api.covalenthq.com/v1/pricing/tickers/?tickers=${daoTickers.toString()}&key=${
-      process.env.COVALENT_API_KEY
-    }`
-  );
-  const { data } = await res.json();
-
-  if (!data) return { props: {} };
-
-  // Remove duplicate tickers
-  daos = data.items.filter(({ contract_name }) =>
-    daoNames.includes(contract_name)
-  );
-
-  return { props: { daos } };
 }
 
-export default Home;
+// export async function getServerSideProps() {
+//   const daoNames = [];
+//   const daoTickers = [];
+//   daoList.map(({ contractName, contractTicker }) => {
+//     daoNames.push(contractName);
+//     daoTickers.push(contractTicker);
+//   });
+
+//   let daos = [];
+
+//   const res = await fetch(
+//     `https://api.covalenthq.com/v1/pricing/tickers/?tickers=${daoTickers.toString()}&key=${
+//       process.env.COVALENT_API_KEY
+//     }`
+//   );
+//   const { data } = await res.json();
+
+//   if (!data) return { props: {} };
+
+//   // Remove duplicate tickers
+//   daos = data.items.filter(({ contract_name }) =>
+//     daoNames.includes(contract_name)
+//   );
+
+//   return { props: { daos } };
+// }

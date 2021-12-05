@@ -10,6 +10,6 @@ export function abbrNumber(x: number) {
   } else if (x >= 1000) {
     return (x / 1000).toFixed(1).replace(/\.0$/, "") + "K";
   } else {
-    return x;
+    return x.toString();
   }
 }

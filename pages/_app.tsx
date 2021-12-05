@@ -1,12 +1,13 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
+import { Navigation } from "../components";
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <Navigation>
+        <Component {...pageProps} />
+      </Navigation>
     </ChakraProvider>
   );
 }
-
-export default MyApp;
