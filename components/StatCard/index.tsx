@@ -1,58 +1,30 @@
-// Mui
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import { useTheme } from "@mui/material";
+import { ComponentType } from "react";
+import { Box, Text, Tooltip } from "@chakra-ui/react";
 
-export default function StatCard({ title, value, valueColor, Icon, tooltip }) {
-  const theme = useTheme();
-  const primaryColor = theme.palette.primary.main;
-  const secondaryColor = theme.palette.secondary.main;
+type Props = {
+  title: string;
+  value: number;
+  valueColor: string;
+  Icon: ComponentType;
+  tooltip?: string;
+};
 
-  const styles = {
-    container: {
-      marginTop: 6,
-    },
-    icon: {
-      position: "absolute",
-      padding: 3,
-      borderRadius: "5%",
-      boxShadow: `0 0 20px 2px ${secondaryColor}`,
-      marginTop: -6,
-      marginLeft: 2,
-      backgroundColor: primaryColor,
-      color: "#fff",
-      fontSize: "6rem",
-    },
-    header: {
-      marginTop: 8,
-    },
-    value: {
-      fontWeight: "bold",
-    },
-  };
+export default function StatCard(props: Props) {
+  const { title, value, valueColor, Icon, tooltip } = props;
 
   return (
-    <Card elevation={10} sx={styles.container}>
-      <Icon sx={styles.icon} />
-      <CardContent sx={styles.header}>
-        <Tooltip title={tooltip}>
-          <Typography variant="h5">{title}</Typography>
+    <Box>
+      <Icon />
+      <Box>
+        <Tooltip label={tooltip}>
+          <Text fontSize="md">{title}</Text>
         </Tooltip>
-      </CardContent>
-      <CardContent>
-        <Typography
-          variant="h4"
-          component="h2"
-          align="center"
-          color={valueColor}
-          sx={styles.value}
-        >
+      </Box>
+      <Box>
+        <Text fontSize="lg" color={valueColor}>
           {value}
-        </Typography>
-      </CardContent>
-    </Card>
+        </Text>
+      </Box>
+    </Box>
   );
 }

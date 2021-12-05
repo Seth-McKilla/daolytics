@@ -28,7 +28,7 @@ export default function LineGraph(props: Props) {
 
   return (
     <Box>
-      <ChakraTooltip title={tooltip}>
+      <ChakraTooltip label={tooltip}>
         <Text fontSize="lg">{title}</Text>
       </ChakraTooltip>
       <ResponsiveContainer width="100%" aspect={2.5}>
@@ -51,7 +51,7 @@ export default function LineGraph(props: Props) {
           </defs>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey={keyX} angle={-45} textAnchor="end" />
-          <YAxis tickFormatter={(label) => abbrNumber(label)} />
+          <YAxis tickFormatter={(label: number) => abbrNumber(label)} />
           <Tooltip formatter={(number: number) => numbersWithCommas(number)} />
           <Area
             type="monotone"

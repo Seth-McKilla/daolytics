@@ -56,7 +56,7 @@ export default function PieChartHolders(props: Props) {
 
   return (
     <Box>
-      <Tooltip title={tooltip}>
+      <Tooltip label={tooltip}>
         <Text fontSize="md">{title}</Text>
       </Tooltip>
       <ResponsiveContainer width="100%" aspect={3}>
