@@ -1,8 +1,8 @@
-export function numbersWithCommas(x) {
+export function numbersWithCommas(x: number) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function abbrNumber(x) {
+export function abbrNumber(x: number) {
   if (x >= 1000000000) {
     return (x / 1000000000).toFixed(1).replace(/\.0$/, "") + "B";
   } else if (x >= 1000000) {
