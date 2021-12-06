@@ -2,7 +2,7 @@ import Head from "next/head";
 import daoList from "../constants/daoList.json";
 
 // Chakra
-import { Grid, Box, useColorModeValue, Center } from "@chakra-ui/react";
+import { Grid, Center } from "@chakra-ui/react";
 
 // Layout
 import { LandingLayout } from "../layouts";

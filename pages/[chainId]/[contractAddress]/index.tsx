@@ -14,7 +14,7 @@ import { Grid, GridItem, Box, Flex, Text, Tooltip } from "@chakra-ui/react";
 import theme from "@chakra-ui/theme";
 
 // Layout
-import { LayoutDashboard } from "../../../layouts";
+import { DashboardLayout } from "../../../layouts";
 
 // Components
 import {
@@ -114,7 +114,7 @@ export default function DaoDashboard() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <LayoutDashboard>
+      <DashboardLayout>
         <Flex>
           {/* UPDATE HARD-CODED VALUES! */}
           <Box>
@@ -232,7 +232,7 @@ export default function DaoDashboard() {
             )}
           </Grid>
         </Grid>
-      </LayoutDashboard>
+      </DashboardLayout>
     </div>
   );
 }
