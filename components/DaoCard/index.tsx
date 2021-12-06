@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Text, Box, Flex, Image, useColorModeValue } from "@chakra-ui/react";
+import { Text, Box, Image, useColorModeValue } from "@chakra-ui/react";
 import daoList from "../../constants/daoList.json";
 import _ from "lodash";
 
@@ -24,55 +24,46 @@ export default function CardDao(props: Props) {
       passHref
       prefetch={false}
     >
-      <Flex
-        bg={useColorModeValue("#F9FAFB", "gray.600")}
-        p={50}
-        w="full"
-        alignItems="center"
-        justifyContent="center"
+      <Box
+        bg={useColorModeValue("white", "gray.800")}
+        maxW="256px"
+        borderWidth="1px"
+        rounded="lg"
+        shadow="lg"
+        cursor="pointer"
       >
-        <Box
-          bg={useColorModeValue("white", "gray.800")}
-          maxW="sm"
-          borderWidth="1px"
-          rounded="lg"
-          shadow="lg"
-        >
-          <Image src={imgUrl} alt={name} roundedTop="lg" />
+        <Image src={imgUrl} alt={name} roundedTop="lg" />
 
-          <Box p="6">
-            <Box d="flex" alignItems="baseline">
-              <Box
-                as="h4"
-                color="white"
-                fontWeight="semibold"
-                letterSpacing="wide"
-                fontSize="xl"
-                textTransform="uppercase"
-                ml="2"
-                width="100%"
-              >
-                {`${name.replace("Token", "")}`}
-              </Box>
-            </Box>
+        <Box p="6">
+          <Box
+            as="h4"
+            color="white"
+            fontWeight="semibold"
+            letterSpacing="wide"
+            fontSize="xl"
+            textTransform="uppercase"
+            ml="2"
+            width="100%"
+          >
+            {`${name.replace("Token", "")}`}
+          </Box>
 
-            <Box
-              mt="1"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              isTruncated
-            >
-              {ticker}
-            </Box>
+          <Box
+            mt="1"
+            fontWeight="semibold"
+            as="h4"
+            lineHeight="tight"
+            isTruncated
+          >
+            {ticker}
+          </Box>
 
-            <Box>
-              <Text variant="h6" color="green.500">{`$${price}`}</Text>
-              <Box as="span" color="gray.600" fontSize="sm"></Box>
-            </Box>
+          <Box>
+            <Text variant="h6" color="green.500">{`$${price}`}</Text>
+            <Box as="span" color="gray.600" fontSize="sm"></Box>
           </Box>
         </Box>
-      </Flex>
+      </Box>
     </Link>
   );
 }

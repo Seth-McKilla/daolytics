@@ -17,11 +17,11 @@ export default function LayoutDashboard({ children }: { children: ReactNode }) {
 
   return (
     <Box as="section" bg={bg} minH="100vh">
-      <NavSide />
+      <NavSide showLinks={false} />
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} placement="left">
         <DrawerOverlay />
         <DrawerContent>
-          <NavSide />
+          <NavSide showLinks={false} />
         </DrawerContent>
       </Drawer>
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">

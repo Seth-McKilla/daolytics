@@ -8,7 +8,6 @@ import {
   InputLeftElement,
   Input,
   useColorModeValue,
-  Text,
 } from "@chakra-ui/react";
 import { FiMenu, FiSearch } from "react-icons/fi";
 

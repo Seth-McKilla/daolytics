@@ -1,1 +1,2 @@
-export { default as LayoutDashboard } from "./LayoutDashboard";
+export { default as DashboardLayout } from "./DashboardLayout";
+export { default as LandingLayout } from "./LandingLayout";

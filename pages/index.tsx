@@ -1,14 +1,33 @@
 import Head from "next/head";
-//import Link from "next/link";
-//import Image from "next/image";
-// import daoList from "../constants/daoList";
+import daoList from "../constants/daoList.json";
 
-import { Box, Text, useColorModeValue } from "@chakra-ui/react";
+// Chakra
+import { Grid, Box, useColorModeValue, Center } from "@chakra-ui/react";
 
 // Layout
-import { LayoutDashboard } from "../layouts";
+import { LandingLayout } from "../layouts";
 
-export default function Home() {
+// Components
+import { DaoCard } from "../components";
+
+type Dao = {
+  contract_decimals: number;
+  contract_name: string;
+  contract_ticker_symbol: string;
+  contract_address: string;
+  supports_erc: boolean;
+  logo_url: string;
+  quote_rate: number;
+  rank: number;
+};
+
+type Props = {
+  daos: Dao[];
+};
+
+export default function Home(props: Props) {
+  const { daos } = props;
+
   return (
     <div>
       <Head>
@@ -21,58 +40,50 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <LayoutDashboard>
-        <Box>
-          <Text fontSize="xl">Placeholder</Text>
-        </Box>
-      </LayoutDashboard>
-
-      {/* <LandingLayout>
-        <Box item xs={12} align="center" bg={useColorModeValue("white", "gray.800")} sx={{ color: "#fff", zIndex: 10 }}>
-          <Box container spacing={2} mt={5}>
+      <LandingLayout>
+        <Center>
+          <Grid templateColumns="repeat(6, 1fr)" gap={6}>
             {daos.length === 0
               ? "Error fetching DAOs"
               : daos.map((dao) => (
-                  <Box item xs={3} key={dao.contract_name}>
-                    <DaoCard
-                      name={dao.contract_name}
-                      ticker={dao.contract_ticker_symbol}
-                      price={dao.quote_rate}
-                      address={dao.contract_address}
-                      imgUrl={dao.logo_url}
-                    />
-                  </Box>
+                  <DaoCard
+                    key={dao.contract_name}
+                    name={dao.contract_name}
+                    ticker={dao.contract_ticker_symbol}
+                    price={dao.quote_rate}
+                    imgUrl={dao.logo_url}
+                  />
                 ))}
-          </Box>
-        </Box>
-      </LandingLayout>  */}
+          </Grid>
+        </Center>
+      </LandingLayout>
     </div>
   );
 }
 
-// export async function getServerSideProps() {
-//   const daoNames = [];
-//   const daoTickers = [];
-//   daoList.map(({ contractName, contractTicker }) => {
-//     daoNames.push(contractName);
-//     daoTickers.push(contractTicker);
-//   });
+export async function getServerSideProps() {
+  const daoNames: string[] = [];
+  const daoTickers: string[] = [];
+  daoList.map(({ contractName, contractTicker }) => {
+    daoNames.push(contractName);
+    daoTickers.push(contractTicker);
+  });
 
-//   let daos = [];
+  let daos = [];
 
-//   const res = await fetch(
-//     `https://api.covalenthq.com/v1/pricing/tickers/?tickers=${daoTickers.toString()}&key=${
-//       process.env.COVALENT_API_KEY
-//     }`
-//   );
-//   const { data } = await res.json();
+  const res = await fetch(
+    `https://api.covalenthq.com/v1/pricing/tickers/?tickers=${daoTickers.toString()}&key=${
+      process.env.COVALENT_API_KEY
+    }`
+  );
+  const { data } = await res.json();
 
-//   if (!data) return { props: {} };
+  if (!data) return { props: {} };
 
-//   // Remove duplicate tickers
-//   daos = data.items.filter(({ contract_name }) =>
-//     daoNames.includes(contract_name)
-//   );
+  // Remove duplicate tickers
+  daos = data.items.filter(({ contract_name }: { contract_name: string }) =>
+    daoNames.includes(contract_name)
+  );
 
-//   return { props: { daos } };
-// }
+  return { props: { daos } };
+}

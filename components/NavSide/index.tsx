@@ -1,9 +1,9 @@
+import Image from "next/image";
 import {
   Button,
   Box,
   Flex,
   IconButton,
-  Text,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
@@ -21,12 +21,16 @@ import { ChevronLeftIcon } from "@chakra-ui/icons";
 // Components
 import NavLink from "./NavLink";
 import { SocialLinks } from "..";
-//import { Logo } from "logo";
 
-export default function NavSide() {
+type Props = {
+  showLinks: boolean;
+};
+
+export default function NavSide(props: Props) {
+  const { showLinks } = props;
+
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const color = useColorModeValue("brand.500", "white");
   const text = useColorModeValue("dark", "light");
   const bg = useColorModeValue("purple.200", "gray.800");
   const borderColor = useColorModeValue("inherit", "gray.700");
@@ -38,7 +42,7 @@ export default function NavSide() {
       top="0"
       left="0"
       zIndex="sticky"
-      h="full"
+      h="100vh"
       pb="10"
       overflowX="hidden"
       overflowY="auto"
@@ -48,24 +52,23 @@ export default function NavSide() {
       w="60"
     >
       <Flex px="4" py="5" align="center">
-        {/* <Logo /> */}
-        <Text fontSize="4xl" ml="2" color={color} fontWeight="semibold">
-          DAOlytics
-        </Text>
+        <Image src="/logo-full.png" alt="logo" width={225} height={225} />
       </Flex>
-      <Flex
-        direction="column"
-        as="nav"
-        fontSize="sm"
-        color="gray.600"
-        aria-label="Main Navigation"
-      >
-        <NavLink icon={AiFillSignal}>DashBoard</NavLink>
-        <NavLink icon={AiFillFilePpt}>Proposals</NavLink>
-        <NavLink icon={AiOutlineWechat}>News</NavLink>
-        <NavLink icon={AiOutlineTeam}>Token Holders</NavLink>
-        <NavLink icon={AiOutlineCalendar}>Events</NavLink>
-      </Flex>
+      {showLinks && (
+        <Flex
+          direction="column"
+          as="nav"
+          fontSize="sm"
+          color="gray.600"
+          aria-label="Main Navigation"
+        >
+          <NavLink icon={AiFillSignal}>DashBoard</NavLink>
+          <NavLink icon={AiFillFilePpt}>Proposals</NavLink>
+          <NavLink icon={AiOutlineWechat}>News</NavLink>
+          <NavLink icon={AiOutlineTeam}>Token Holders</NavLink>
+          <NavLink icon={AiOutlineCalendar}>Events</NavLink>
+        </Flex>
+      )}
 
       <Flex
         pt={260}
@@ -77,18 +80,20 @@ export default function NavSide() {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <Button
-          height="45px"
-          width="150px"
-          borderRadius="full"
-          borderWidth={2}
-          colorScheme="purple"
-          size="md"
-          fontSize="lg"
-          leftIcon={<ChevronLeftIcon />}
-        >
-          DAOs List
-        </Button>
+        {showLinks && (
+          <Button
+            height="45px"
+            width="150px"
+            borderRadius="full"
+            borderWidth={2}
+            colorScheme="purple"
+            size="md"
+            fontSize="lg"
+            leftIcon={<ChevronLeftIcon />}
+          >
+            DAOs List
+          </Button>
+        )}
       </Flex>
 
       <SocialLinks
