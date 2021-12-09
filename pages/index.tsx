@@ -57,7 +57,7 @@ export default function Home(props: Props) {
               </Heading>
             </Box>
             <SimpleGrid columns={[1, null, 4]} spacing={5}>
-              {daos.length === 0
+              {!daos || daos.length === 0
                 ? "Error fetching DAOs"
                 : daos.map((dao) => (
                     <DaoCard
