@@ -134,7 +134,7 @@ export default function NavSide(props: Props) {
           <IconButton
             borderRadius="full"
             borderWidth={2}
-            borderColor="#9090F1"
+            borderColor="purple.900"
             bg={useColorModeValue("blackAlpha.100", "gray.750")}
             color={useColorModeValue({}, "gray.400")}
             size="md"
@@ -178,7 +178,7 @@ export default function NavSide(props: Props) {
         width="100%"
       >
         {" "}
-        <Box>
+        <Box as="footer">
           <Text color={useColorModeValue("gray.700", "white")}>
             Made with ❤ by Sabelo, Cheeto And Seth
           </Text>

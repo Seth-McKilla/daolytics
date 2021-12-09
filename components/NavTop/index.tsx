@@ -18,7 +18,7 @@ export default function NavTop(props: Props) {
   const { onOpen } = props;
 
   const bg = useColorModeValue("white", "gray.800");
-  //const borderColor = useColorModeValue("inherit", "gray.700");
+  const color = useColorModeValue("#212145", "gray.800");
 
   return (
     <Flex
@@ -57,7 +57,12 @@ export default function NavTop(props: Props) {
       />
 
       <Flex align="center">
-        <Button colorScheme="purple.100" variant="outline">
+        <Button
+          color={color}
+          borderWidth={1}
+          borderColor="#212145"
+          bg="purple.200"
+        >
           Connect Wallet
         </Button>
       </Flex>
