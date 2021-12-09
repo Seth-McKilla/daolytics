@@ -51,9 +51,17 @@ export default function Home(props: Props) {
         <Center>
           <Box>
             <Box>
-              <Heading color="#212145" as="h1" size="2xl" py={10}>
+              <Heading
+                color={useColorModeValue("gray.700", "white")}
+                as="h1"
+                size="2xl"
+                py={10}
+              >
                 DAO List
-                <Divider borderColor="black" borderWidth={2} />
+                <Divider
+                  borderColor={useColorModeValue("black", "white")}
+                  borderWidth={2}
+                />
               </Heading>
             </Box>
             <SimpleGrid columns={[1, null, 4]} spacing={5}>

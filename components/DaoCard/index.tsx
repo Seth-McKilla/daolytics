@@ -27,7 +27,7 @@ export default function CardDao(props: Props) {
       <Box
         bg={useColorModeValue("white", "gray.800")}
         maxW="256px"
-        borderWidth="1px"
+        borderWidth={2}
         rounded="lg"
         shadow="lg"
         cursor="pointer"

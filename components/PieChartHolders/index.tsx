@@ -5,7 +5,7 @@ import {
   Pie,
   ResponsiveContainer,
 } from "recharts";
-import { Box, Tooltip, Text } from "@chakra-ui/react";
+import { Box, Tooltip, Text, useColorModeValue } from "@chakra-ui/react";
 import theme from "@chakra-ui/theme";
 
 // Components
@@ -39,6 +39,7 @@ const getColorShades = () => {
 export default function PieChartHolders(props: Props) {
   const { data, title, tooltip } = props;
   const [activeIndex, setActiveIndex] = useState(0);
+  const bg = useColorModeValue("white", "gray.800");
 
   const COLORS = getColorShades();
 
@@ -55,9 +56,17 @@ export default function PieChartHolders(props: Props) {
   const onPieEnter = (_: undefined, index: number) => setActiveIndex(index);
 
   return (
-    <Box>
+    <Box
+      borderWidth={2}
+      borderColor={useColorModeValue("#DBDBFF", "#212145")}
+      Height="100%"
+      Width="50%"
+      rounded="lg"
+      shadow="lg"
+      bg={bg}
+    >
       <Tooltip label={tooltip}>
-        <Text textAlign="center" fontWeight="bold" fontSize="md">
+        <Text py={4} textAlign="center" fontWeight="bold" fontSize="xl">
           {title}
         </Text>
       </Tooltip>

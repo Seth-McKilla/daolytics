@@ -24,6 +24,7 @@ import { ChevronLeftIcon, SettingsIcon } from "@chakra-ui/icons";
 // Components
 import NavLink from "./NavLink";
 import { SocialLinks } from "..";
+import { Text } from "recharts";
 
 type Props = {
   showLinks: boolean;
@@ -162,6 +163,26 @@ export default function NavSide(props: Props) {
           twitterLink="https://twitter.com/SethMcKilla"
           discordLink="https://discord.com/channels/913887015953649716/913887015953649718"
         />
+      </Flex>
+
+      <Flex
+        pt={3}
+        alignItems="center"
+        direction="column"
+        as="nav"
+        fontSize="md"
+        color="gray.600"
+        aria-label="Main Navigation"
+        position="fixed"
+        bottom="1%"
+        width="100%"
+      >
+        {" "}
+        <Box>
+          <Text color={useColorModeValue("gray.700", "white")}>
+            Made with ❤ by Sabelo, Cheeto And Seth
+          </Text>
+        </Box>
       </Flex>
     </Box>
   );

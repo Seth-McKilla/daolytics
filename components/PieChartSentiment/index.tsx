@@ -5,7 +5,7 @@ import {
   Pie,
   ResponsiveContainer,
 } from "recharts";
-import { Box, Tooltip, Text } from "@chakra-ui/react";
+import { Box, Tooltip, Text, useColorModeValue } from "@chakra-ui/react";
 
 // Components
 import RenderActiveShape from "./RenderActiveShape";
@@ -18,14 +18,27 @@ type Props = {
 
 export default function PieChartSentiment(props: Props) {
   const { data, title, tooltip } = props;
-
+  const bg = useColorModeValue("white", "gray.800");
   const [activeIndex, setActiveIndex] = useState(0);
 
   const onPieEnter = (_: undefined, index: number) => setActiveIndex(index);
 
   return (
-    <Box>
-      <ResponsiveContainer width="100%" aspect={1}>
+    <Box
+      borderWidth={2}
+      borderColor={useColorModeValue("#DBDBFF", "#212145")}
+      rounded="lg"
+      shadow="lg"
+      bg={bg}
+      w="full"
+      maxW="sm"
+    >
+      <Tooltip label={tooltip}>
+        <Text py={5} fontWeight="bold" textAlign="center" fontSize="xl">
+          {title}
+        </Text>
+      </Tooltip>
+      <ResponsiveContainer width="100%" aspect={2}>
         <RePieChart>
           <Pie
             style={{ zIndex: 10 }}
@@ -46,11 +59,6 @@ export default function PieChartSentiment(props: Props) {
           </Pie>
         </RePieChart>
       </ResponsiveContainer>
-      <Tooltip label={tooltip}>
-        <Text textAlign="center" fontSize="md">
-          {title}
-        </Text>
-      </Tooltip>
     </Box>
   );
 }

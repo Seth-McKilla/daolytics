@@ -9,7 +9,12 @@ import {
 } from "recharts";
 
 // Chakra
-import { Tooltip as ChakraTooltip, Box, Text } from "@chakra-ui/react";
+import {
+  Tooltip as ChakraTooltip,
+  Box,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 // Utils
 import { numbersWithCommas, abbrNumber } from "../../utils/numbers";
@@ -25,11 +30,22 @@ type Props = {
 
 export default function LineGraph(props: Props) {
   const { title, data, color, keyX, keyY, tooltip } = props;
+  const bg = useColorModeValue("white", "gray.800");
 
   return (
-    <Box>
+    <Box
+      borderWidth={2}
+      borderColor={useColorModeValue("#DBDBFF", "#212145")}
+      rounded="lg"
+      shadow="lg"
+      bg={bg}
+      width="100%"
+      Height="100%"
+    >
       <ChakraTooltip label={tooltip}>
-        <Text fontSize="lg">{title}</Text>
+        <Text py={4} textAlign="center" fontWeight="bold" fontSize="xl">
+          {title}
+        </Text>
       </ChakraTooltip>
       <ResponsiveContainer width="100%" aspect={2.5}>
         <AreaChart
