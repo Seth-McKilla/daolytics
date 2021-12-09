@@ -11,8 +11,10 @@ type Props = {
 export default function NavLink(props: Props) {
   const { icon, children, ...rest } = props;
 
-  const color = useColorModeValue("gray.600", "gray.400");
-  const hoverColor = useColorModeValue("gray.700", "gray.500");
+  const bg = useColorModeValue("gray.100", "gray.900");
+
+  const color = useColorModeValue("inherit", "gray.400");
+  const hoverColor = useColorModeValue("gray.900", "gray.500");
 
   return (
     <Flex
@@ -23,7 +25,7 @@ export default function NavLink(props: Props) {
       cursor="pointer"
       color={color}
       _hover={{
-        bg: hoverColor,
+        bg: bg,
         color: hoverColor,
       }}
       role="group"

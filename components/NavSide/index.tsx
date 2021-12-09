@@ -6,6 +6,9 @@ import {
   IconButton,
   useColorModeValue,
   useColorMode,
+  Container,
+  Center,
+  Spacer,
 } from "@chakra-ui/react";
 
 import {
@@ -16,7 +19,7 @@ import {
   AiOutlineCalendar,
 } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { ChevronLeftIcon, SettingsIcon } from "@chakra-ui/icons";
 
 // Components
 import NavLink from "./NavLink";
@@ -32,7 +35,7 @@ export default function NavSide(props: Props) {
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const text = useColorModeValue("dark", "light");
-  const bg = useColorModeValue("purple.200", "gray.800");
+  const bg = useColorModeValue("#DBDBFF", "gray.800");
   const borderColor = useColorModeValue("inherit", "gray.700");
 
   return (
@@ -47,7 +50,7 @@ export default function NavSide(props: Props) {
       overflowX="hidden"
       overflowY="auto"
       bg={bg}
-      borderColor={borderColor}
+      borderColor={useColorModeValue("#DBDBFF", "#212145")}
       borderRightWidth="1px"
       w="60"
     >
@@ -71,57 +74,93 @@ export default function NavSide(props: Props) {
       )}
 
       <Flex
-        pt={260}
-        pr={2}
-        alignItems="center"
-        direction="column"
+        display="bottom"
+        direction="row"
         as="nav"
         fontSize="md"
-        color="gray.600"
+        color="#212145"
         aria-label="Main Navigation"
+        position="absolute"
+        bottom="16%"
+        width="100%"
       >
-        {showLinks && (
-          <Button
-            height="45px"
-            width="150px"
-            borderRadius="full"
-            borderWidth={2}
-            colorScheme="purple"
-            size="md"
-            fontSize="lg"
-            leftIcon={<ChevronLeftIcon />}
-          >
-            DAOs List
-          </Button>
-        )}
+        <Center>
+          {showLinks && (
+            <Button
+              height="45px"
+              width="150px"
+              borderRadius="full"
+              borderWidth={2}
+              borderColor="#DBDBFF"
+              bg="white"
+              size="md"
+              fontSize="lg"
+              boxShadow="md"
+              leftIcon={<ChevronLeftIcon />}
+            >
+              DAOs List
+            </Button>
+          )}
+        </Center>
       </Flex>
-
-      <SocialLinks
-        githubLink="https://github.com/Seth-McKilla/daolytics"
-        twitterLink="https://twitter.com/SethMcKilla"
-        discordLink="https://discord.com/channels/913887015953649716/913887015953649718"
-      />
 
       <Flex
         pt={3}
         pr={2}
         alignItems="center"
+        direction="row"
+        as="nav"
+        fontSize="md"
+        color="gray.600"
+        aria-label="Main Navigation"
+        position="absolute"
+        bottom="10%"
+        width="100%"
+      >
+        <Container width="150">
+          <IconButton
+            borderRadius="full"
+            bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
+            color={useColorModeValue({}, "gray.400")}
+            size="md"
+            fontSize="lg"
+            aria-label="setting"
+            ml={{ base: "0", md: "3" }}
+            icon={<SettingsIcon />}
+            boxShadow="base"
+          />
+
+          <IconButton
+            borderRadius="full"
+            borderWidth={2}
+            borderColor="#9090F1"
+            bg={useColorModeValue("blackAlpha.100", "gray.750")}
+            color={useColorModeValue({}, "gray.400")}
+            size="md"
+            fontSize="lg"
+            aria-label={`Switch to ${text} mode`}
+            ml={{ base: "0", md: "3" }}
+            onClick={toggleColorMode}
+            icon={<SwitchIcon />}
+          />
+        </Container>
+      </Flex>
+      <Flex
+        pt={3}
+        alignItems="center"
         direction="column"
         as="nav"
         fontSize="md"
         color="gray.600"
         aria-label="Main Navigation"
+        position="absolute"
+        bottom="5%"
+        width="100%"
       >
-        <IconButton
-          borderRadius="full"
-          borderWidth={2}
-          colorScheme="purple"
-          size="md"
-          fontSize="lg"
-          aria-label={`Switch to ${text} mode`}
-          ml={{ base: "0", md: "3" }}
-          onClick={toggleColorMode}
-          icon={<SwitchIcon />}
+        <SocialLinks
+          githubLink="https://github.com/Seth-McKilla/daolytics"
+          twitterLink="https://twitter.com/SethMcKilla"
+          discordLink="https://discord.com/channels/913887015953649716/913887015953649718"
         />
       </Flex>
     </Box>

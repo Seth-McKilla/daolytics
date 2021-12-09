@@ -31,27 +31,26 @@ export default function CardDao(props: Props) {
         rounded="lg"
         shadow="lg"
         cursor="pointer"
+        borderColor={useColorModeValue("#DBDBFF", "#212145")}
       >
         <Image src={imgUrl} alt={name} roundedTop="lg" />
 
         <Box p="6">
           <Box
-            as="h4"
-            color="white"
+            as="h6"
             fontWeight="semibold"
-            letterSpacing="wide"
-            fontSize="xl"
+            fontSize="md"
             textTransform="uppercase"
-            ml="2"
             width="100%"
           >
             {`${name.replace("Token", "")}`}
           </Box>
 
           <Box
+            color="#02E2AC"
             mt="1"
             fontWeight="semibold"
-            as="h4"
+            as="samp"
             lineHeight="tight"
             isTruncated
           >

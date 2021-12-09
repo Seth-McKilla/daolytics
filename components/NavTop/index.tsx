@@ -18,7 +18,7 @@ export default function NavTop(props: Props) {
   const { onOpen } = props;
 
   const bg = useColorModeValue("white", "gray.800");
-  const borderColor = useColorModeValue("inherit", "gray.700");
+  //const borderColor = useColorModeValue("inherit", "gray.700");
 
   return (
     <Flex
@@ -29,7 +29,7 @@ export default function NavTop(props: Props) {
       px="4"
       bg={bg}
       borderBottomWidth="1px"
-      borderColor={borderColor}
+      borderColor={useColorModeValue("#DBDBFF", "#212145")}
       h="14"
     >
       <IconButton
@@ -40,12 +40,12 @@ export default function NavTop(props: Props) {
         size="sm"
       />
 
-      <InputGroup w="96" display={{ base: "none", md: "flex" }}>
+      {/* <InputGroup w="96" display={{ base: "none", md: "flex" }}>
         <InputLeftElement color="gray.500">
           <FiSearch />
         </InputLeftElement>
         <Input placeholder="Search metrics..." />
-      </InputGroup>
+      </InputGroup> */}
 
       <Box
         as="iframe"
@@ -57,7 +57,7 @@ export default function NavTop(props: Props) {
       />
 
       <Flex align="center">
-        <Button colorScheme="purple" variant="outline">
+        <Button colorScheme="purple.100" variant="outline">
           Connect Wallet
         </Button>
       </Flex>

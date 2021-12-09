@@ -26,8 +26,14 @@ export default function LayoutDashboard({ children }: { children: ReactNode }) {
       </Drawer>
       <Box ml={{ base: 0, md: 60 }} transition=".3s ease">
         <NavTop onOpen={() => setIsOpen(true)} />
-
-        <Box as="main" p="4">
+        <Box
+          as="main"
+          px={4}
+          py={38}
+          pb={355}
+          mx="auto"
+          bg={useColorModeValue("purple.50", "gray.900")}
+        >
           {children}
         </Box>
       </Box>

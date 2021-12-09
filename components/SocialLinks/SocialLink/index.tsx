@@ -10,12 +10,13 @@ type Props = {
 export default function SocialLink(props: Props) {
   const { children, label, href } = props;
 
-  const bg = useColorModeValue("blackAlpha.100", "whiteAlpha.100");
+  //color = useColorModeValue("blackAlpha.100", "whiteAlpha.100");
 
   return (
     <chakra.button
-      bg={bg}
+      color={useColorModeValue("black", "gray.400")}
       rounded="full"
+      boxShadow="base"
       w={8}
       h={8}
       cursor="pointer"
@@ -25,9 +26,9 @@ export default function SocialLink(props: Props) {
       alignItems="center"
       justifyContent="center"
       transition="background 0.3s ease"
-      _hover={{
-        bg,
-      }}
+      // _hover={{
+      //   bg,
+      // }}
     >
       <VisuallyHidden>{label}</VisuallyHidden>
       {children}

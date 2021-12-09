@@ -2,7 +2,14 @@ import Head from "next/head";
 import daoList from "../constants/daoList.json";
 
 // Chakra
-import { Grid, Center } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  SimpleGrid,
+  useColorModeValue,
+  Heading,
+  Divider,
+} from "@chakra-ui/react";
 
 // Layout
 import { LandingLayout } from "../layouts";
@@ -42,19 +49,27 @@ export default function Home(props: Props) {
 
       <LandingLayout>
         <Center>
-          <Grid templateColumns="repeat(6, 1fr)" gap={6}>
-            {daos.length === 0
-              ? "Error fetching DAOs"
-              : daos.map((dao) => (
-                  <DaoCard
-                    key={dao.contract_name}
-                    name={dao.contract_name}
-                    ticker={dao.contract_ticker_symbol}
-                    price={dao.quote_rate}
-                    imgUrl={dao.logo_url}
-                  />
-                ))}
-          </Grid>
+          <Box>
+            <Box>
+              <Heading color="#212145" as="h1" size="2xl" py={10}>
+                DAO List
+                <Divider borderColor="black" borderWidth={2} />
+              </Heading>
+            </Box>
+            <SimpleGrid columns={[1, null, 4]} spacing={5}>
+              {daos.length === 0
+                ? "Error fetching DAOs"
+                : daos.map((dao) => (
+                    <DaoCard
+                      key={dao.contract_name}
+                      name={dao.contract_name}
+                      ticker={dao.contract_ticker_symbol}
+                      price={dao.quote_rate}
+                      imgUrl={dao.logo_url}
+                    />
+                  ))}
+            </SimpleGrid>
+          </Box>
         </Center>
       </LandingLayout>
     </div>

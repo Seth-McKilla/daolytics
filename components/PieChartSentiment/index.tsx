@@ -47,7 +47,9 @@ export default function PieChartSentiment(props: Props) {
         </RePieChart>
       </ResponsiveContainer>
       <Tooltip label={tooltip}>
-        <Text fontSize="md">{title}</Text>
+        <Text textAlign="center" fontSize="md">
+          {title}
+        </Text>
       </Tooltip>
     </Box>
   );

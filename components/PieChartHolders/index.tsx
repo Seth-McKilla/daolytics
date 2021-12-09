@@ -57,9 +57,11 @@ export default function PieChartHolders(props: Props) {
   return (
     <Box>
       <Tooltip label={tooltip}>
-        <Text fontSize="md">{title}</Text>
+        <Text textAlign="center" fontWeight="bold" fontSize="md">
+          {title}
+        </Text>
       </Tooltip>
-      <ResponsiveContainer width="100%" aspect={3}>
+      <ResponsiveContainer width="100%" aspect={2}>
         <RePieChart>
           <Pie
             style={{ zIndex: 10 }}
@@ -68,7 +70,7 @@ export default function PieChartHolders(props: Props) {
             data={topHolders}
             cx="50%"
             cy="50%"
-            innerRadius={30}
+            innerRadius={20}
             outerRadius={120}
             fill="#8884d8"
             dataKey="value"
