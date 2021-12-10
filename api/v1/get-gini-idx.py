@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
     query = urlparse(self.path).query
     chainId = parse_qs(query)["chainId"][0]
     contractId = parse_qs(query)["contractId"][0]
-    ticker = parse_qs(query)["ticker"][0]
+    #ticker = parse_qs(query)["ticker"][0]
 
     #Function to reverse the list
     def Reverse(lst):
@@ -43,10 +43,10 @@ class handler(BaseHTTPRequestHandler):
     for i in token_holders_at_block.json()['data']['items']:
         balance_list.append(int(i['balance'])/(10**contract_decimals))
 
-    spot_price = requests.get(f"https://api.covalenthq.com/v1/pricing/tickers/?tickers={ticker}&key={COVALENT_API_KEY}")
+    spot_price = requests.get(f"https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/{chainId}/USD/{contractId}/?&key={COVALENT_API_KEY}")
 
     #Convert balances to USD
-    current_price = spot_price.json()['data']['items'][0]['quote_rate']
+    current_price = spot_price.json()['data'][-1]['prices'][0]['price']
     balance_list_usd = [element*current_price for element in balance_list]
 
     balance_list_usd_reverse = Reverse(balance_list_usd)

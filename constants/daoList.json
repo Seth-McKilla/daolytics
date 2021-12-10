@@ -4,27 +4,47 @@
     "contractName": "Gitcoin",
     "contractTicker": "GTC",
     "contractAddress": "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
-    "logoUrl": "https://logos.covalenthq.com/tokens/0xde30da39c46104798bb5aa3fe8b9e0e1f348163f.png"
+    "logoUrl": "https://logos.covalenthq.com/tokens/0xde30da39c46104798bb5aa3fe8b9e0e1f348163f.png",
+    "snapshotId": "gitcoindao.eth"
   },
   {
     "chainId": "1",
     "contractName": "Radicle",
     "contractTicker": "RAD",
     "contractAddress": "0x31c8eacbffdd875c74b94b077895bd78cf1e64a3",
-    "logoUrl": "https://logos.covalenthq.com/tokens/0x31c8eacbffdd875c74b94b077895bd78cf1e64a3.png"
+    "logoUrl": "https://logos.covalenthq.com/tokens/0x31c8eacbffdd875c74b94b077895bd78cf1e64a3.png",
+    "snapshotId": "gov.radicle.eth"
   },
   {
     "chainId": "1",
     "contractName": "pNetwork Token",
     "contractTicker": "PNT",
     "contractAddress": "0x89ab32156e46f46d02ade3fecbe5fc4243b9aaed",
-    "logoUrl": "https://logos.covalenthq.com/tokens/0x89ab32156e46f46d02ade3fecbe5fc4243b9aaed.png"
+    "logoUrl": "https://logos.covalenthq.com/tokens/0x89ab32156e46f46d02ade3fecbe5fc4243b9aaed.png",
+    "snapshotId": "pnetwork-dao.eth"
   },
   {
     "chainId": "1",
     "contractName": "StakeWise",
     "contractTicker": "SWISE",
     "contractAddress": "0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2",
-    "logoUrl": "https://logos.covalenthq.com/tokens/0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2.png"
-  }
+    "logoUrl": "https://logos.covalenthq.com/tokens/0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2.png",
+    "snapshotId": "stakewise.eth"
+  },
+  {
+    "chainId": "56",
+    "contractName": "Hunny Token",
+    "contractTicker": "HUNNY",
+    "contractAddress": "0x565b72163f17849832a692a3c5928cc502f46d69",
+    "logoUrl": "https://logos.covalenthq.com/tokens/0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2.png",
+    "snapshotId": "hunny.eth"
+  },
+  {
+    "chainId": "43114",
+    "contractName": "Snowbank",
+    "contractTicker": "Sb",
+    "contractAddress": "0x7d1232B90D3F809A54eeaeeBC639C62dF8a8942f",
+    "logoUrl": "https://logos.covalenthq.com/tokens/0x48c3399719b582dd63eb5aadf12a40b4c3f52fa2.png",
+    "snapshotId": "snowbankgovernance.eth"
+  } 
 ]

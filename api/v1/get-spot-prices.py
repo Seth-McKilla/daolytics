@@ -19,8 +19,9 @@ class handler(BaseHTTPRequestHandler):
     query = urlparse(self.path).query
     ticker = parse_qs(query)["ticker"][0]
 
-    response = requests.get(f"https://api.covalenthq.com/v1/pricing/tickers/?tickers={ticker}&key={COVALENT_API_KEY}")
-    spot_prices = response.json()["data"]["items"]
+    response = requests.get(f"https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/{chainId}/USD/{contractId}/?&key={COVALENT_API_KEY}")
+
+    spot_prices = response.json()['data'][-1]['prices'][0]['price']
     
     self.wfile.write(json.dumps({"spot_prices": spot_prices}).encode())
     return
