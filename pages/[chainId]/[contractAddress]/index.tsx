@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-//import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import fetcher from "../../../utils/fetcher";
 import daoList from "../../../constants/daoList.json";
 import _ from "lodash";
-import { MdAttachMoney, MdPeopleAlt } from "react-icons/md";
-import { AiFillBank } from "react-icons/ai";
 
 // Chakra
 import {
@@ -30,20 +27,11 @@ import {
   StatCard,
   LineGraph,
   Loader,
-  SocialLinks,
   Summary,
 } from "../../../components";
 
 // Utils
 import { numbersWithCommas } from "../../../utils/numbers";
-
-type Dao = {
-  chainId: string;
-  contractName: string;
-  contractTicker: string;
-  contractAddress: string;
-  logoUrl: string;
-};
 
 export default function DaoDashboard() {
   const { red, green, gray } = theme.colors;
@@ -53,19 +41,20 @@ export default function DaoDashboard() {
     isReady,
   } = useRouter();
 
-  const dao: Dao = _.find(daoList, { contractAddress });
+  const dao: any = _.find(daoList, { contractAddress });
 
   // API Calls
   // @ Token Holders & Market Cap
   const { data: tokenHolders } = useSWR(
     isReady &&
-      `/api/v1/get-token-holders?chainId=${chainId}&contractId=${contractAddress}&ticker=${dao.contractTicker}`,
+      `/api/v1/get-token-holders?chainId=${chainId}&contractId=${contractAddress}`,
     fetcher
   );
 
   // @ Spot Prices
   const { data: spotPrices } = useSWR(
-    isReady && `/api/v1/get-spot-prices?ticker=${dao.contractTicker}`,
+    isReady &&
+      `/api/v1/get-spot-prices?chainId=${chainId}&contractId=${contractAddress}`,
     fetcher
   );
   const [quoteRate, setQuoteRate] = useState(null);
@@ -94,7 +83,7 @@ export default function DaoDashboard() {
   // @ Gini Index
   const { data: gini } = useSWR(
     isReady &&
-      `/api/v1/get-gini-idx?chainId=${chainId}&contractId=${contractAddress}&ticker=${dao.contractTicker}`,
+      `/api/v1/get-gini-idx?chainId=${chainId}&contractId=${contractAddress}`,
     fetcher
   );
 
@@ -145,10 +134,10 @@ export default function DaoDashboard() {
                 py={8}
                 fontSize="xl"
               >
-                SWE {}
+                {dao.contractTicker}
               </Text>
               <Text fontWeight="bold" float="right" ps={3} py={8} fontSize="xl">
-                StakeWise {}
+                {dao.contractName}
               </Text>
             </Box>
           )}

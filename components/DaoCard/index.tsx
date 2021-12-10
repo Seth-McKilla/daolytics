@@ -7,12 +7,11 @@ import _ from "lodash";
 type Props = {
   name: string;
   ticker: string;
-  price: number;
   imgUrl: string;
 };
 
 export default function CardDao(props: Props) {
-  const { name, ticker, price, imgUrl } = props;
+  const { name, ticker, imgUrl } = props;
 
   const dao = _.find(daoList, {
     contractTicker: _.toUpper(ticker),
@@ -58,7 +57,6 @@ export default function CardDao(props: Props) {
           </Box>
 
           <Box>
-            <Text variant="h6" color="green.500">{`$${price}`}</Text>
             <Box as="span" color="gray.600" fontSize="sm"></Box>
           </Box>
         </Box>

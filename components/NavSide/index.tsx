@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Button,
   Box,
@@ -87,20 +88,22 @@ export default function NavSide(props: Props) {
       >
         <Center>
           {showLinks && (
-            <Button
-              height="45px"
-              width="150px"
-              borderRadius="full"
-              borderWidth={2}
-              borderColor="#DBDBFF"
-              bg="white"
-              size="md"
-              fontSize="lg"
-              boxShadow="md"
-              leftIcon={<ChevronLeftIcon />}
-            >
-              DAOs List
-            </Button>
+            <Link href="/" passHref>
+              <Button
+                height="45px"
+                width="150px"
+                borderRadius="full"
+                borderWidth={2}
+                borderColor="#DBDBFF"
+                bg="white"
+                size="md"
+                fontSize="lg"
+                boxShadow="md"
+                leftIcon={<ChevronLeftIcon />}
+              >
+                DAOs List
+              </Button>
+            </Link>
           )}
         </Center>
       </Flex>
@@ -160,7 +163,7 @@ export default function NavSide(props: Props) {
       >
         <SocialLinks
           githubLink="https://github.com/Seth-McKilla/daolytics"
-          twitterLink="https://twitter.com/SethMcKilla"
+          twitterLink="https://twitter.com/daolytics0x"
           discordLink="https://discord.com/channels/913887015953649716/913887015953649718"
         />
       </Flex>

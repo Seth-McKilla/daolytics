@@ -17,7 +17,8 @@ class handler(BaseHTTPRequestHandler):
     self.send_header("Content-type", "application/json")
     self.end_headers()
     query = urlparse(self.path).query
-    ticker = parse_qs(query)["ticker"][0]
+    chainId = parse_qs(query)["chainId"][0]
+    contractId = parse_qs(query)["contractId"][0]
 
     response = requests.get(f"https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/{chainId}/USD/{contractId}/?&key={COVALENT_API_KEY}")
 
