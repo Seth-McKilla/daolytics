@@ -1,13 +1,22 @@
-This repo is a submission for the [DAO Analytics Dashboard Template](https://gitcoin.co/issue/covalenthq/covalent-gitcoin-bounties/5/100026820) hackathon hosted by [Covalent](https://www.covalenthq.com/) on GitCoin.
+### Project Name: DAOlytics - A multi-chain DAO analytics Dashboard
 
-#DAOlytics
-Daolytics is a basic open source, multi-chain compatible, DAO Analytics Dashboard Template, powered by the Covalent API.
-For a more detailed desccription about the template, please refer to **_[DAOlytics.pdf](https://github.com/Seth-McKilla/covalent-dao/blob/main/DAOlytics.pdf)_** file in this repository.
+Daolytics is a basic open source, multi-chain compatible,fully customisable DAO Analytics Dashboard.
 
-The Dashboard is hosted live **[here](https://covalent-dao.vercel.app/)**.
+#### Live website : [daolytics.xyz](https://daolytics.xyz/)
 
-You can find a short demo video of the Dashboard **[here](https://www.youtube.com/watch?v=8rgz9Y02Qt8)**.
+#### GitHub Repository : [here](https://github.com/Seth-McKilla/daolytics)
 
+#### Short Pitch : Please see this [pitchdeck](https://www.canva.com/design/DAExSawuwJU/bM04_PNJSpMcUB03UF9hAA/view?utm_content=DAExSawuwJU&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton) explaining the Pain points, Target Audience and the solution
+
+#### Demo video and small pitch : [video]()
+
+#### Date of starting the project : November,2021
+
+#### Wallet Address : 0x9C0177e8dDA1D562149F33B6Af8014228ca11E44
+
+#### Person of Contact : Name - [Seth McCullough](https://twitter.com/SethMcKilla) , email - seth@endevrs.dev
+
+#### Additional Documents : Please have a look at this [pdf]() which explains about the present as well as the future feeatures of DAOlytics in detail.
 
 #Running the app
 
